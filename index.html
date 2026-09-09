@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>污水處理與管網維護／減量與防治｜題庫測驗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-icon">水</div>
+      <div>
+        <div class="eyebrow">297 題循序練習題庫</div>
+        <h1>污水處理與管網維護／減量與防治</h1>
+      </div>
+    </div>
+    <button id="homeBtn" class="ghost-btn header-home" type="button">回首頁</button>
+  </header>
+
+  <main class="shell">
+    <section id="homeView" class="view active">
+      <div class="hero card">
+        <div class="hero-copy">
+          <span class="pill">每回最多 40 題</span>
+          <h2>均衡抽題 × 錯題複習 × 掌握進度</h2>
+          <p>題目依 8 大主題均衡抽取。答對後即列為已掌握、後續不再出題；答錯題會保留於錯題池，與尚未掌握題目一起進入下一回抽題。</p>
+          <div class="hero-actions">
+            <button id="startBtn" class="primary-btn" type="button">開始新測驗</button>
+            <button id="resumeBtn" class="secondary-btn hidden" type="button">繼續上次測驗</button>
+          </div>
+        </div>
+        <div class="progress-ring-wrap">
+          <div id="progressRing" class="progress-ring"><span id="masteryPct">0%</span></div>
+          <div class="ring-label">整體掌握率</div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat card"><span>題庫總數</span><strong id="totalCount">297</strong><small>固定題庫</small></article>
+        <article class="stat card"><span>已掌握</span><strong id="masteredCount">0</strong><small>答對後不再出題</small></article>
+        <article class="stat card"><span>目前錯題</span><strong id="wrongCount">0</strong><small>後續優先複習</small></article>
+        <article class="stat card"><span>尚未掌握</span><strong id="remainingCount">297</strong><small>含未作答與錯題</small></article>
+      </div>
+
+      <section class="card section-card">
+        <div class="section-head">
+          <div><span class="eyebrow">均衡抽題架構</span><h3>8 大學習主題</h3></div>
+          <span class="muted">一般情況每類 5 題</span>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+      </section>
+
+      <section class="card section-card">
+        <div class="section-head"><div><span class="eyebrow">學習紀錄</span><h3>最近測驗</h3></div></div>
+        <div id="historyBox" class="history-box empty">尚無測驗紀錄。</div>
+      </section>
+
+      <section class="card tools-card">
+        <div><h3>學習紀錄管理</h3><p>紀錄保存在目前瀏覽器。換裝置或清除瀏覽資料前，可先匯出備份。</p></div>
+        <div class="tool-actions">
+          <button id="exportBtn" class="ghost-btn" type="button">匯出紀錄</button>
+          <label class="ghost-btn file-label">匯入紀錄<input id="importInput" type="file" accept="application/json"></label>
+          <button id="resetBtn" class="danger-btn" type="button">重設全部進度</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="quizView" class="view">
+      <div class="quiz-top card">
+        <div>
+          <span id="quizCategory" class="pill">主題</span>
+          <div class="quiz-progress-text"><strong id="questionPosition">第 1 / 40 題</strong><span id="answeredCount">已作答 0 / 40</span></div>
+        </div>
+        <div class="progress-track"><div id="quizProgressBar"></div></div>
+      </div>
+
+      <section class="question-card card">
+        <div class="question-meta"><span id="sourceLabel"></span><span id="wrongBadge" class="wrong-review hidden">錯題複習</span></div>
+        <h2 id="questionText" class="question-text"></h2>
+        <div id="optionsBox" class="options-box"></div>
+        <div class="nav-row">
+          <button id="prevBtn" class="ghost-btn" type="button">上一題</button>
+          <button id="nextBtn" class="primary-btn" type="button">下一題</button>
+        </div>
+      </section>
+
+      <section class="card palette-card">
+        <div class="palette-head"><strong>題號導覽</strong><span>點選題號可直接跳題</span></div>
+        <div id="questionPalette" class="question-palette"></div>
+        <button id="submitBtn" class="submit-btn" type="button">交卷並查看成績</button>
+      </section>
+    </section>
+
+    <section id="resultView" class="view">
+      <section class="result-hero card">
+        <div class="score-circle"><strong id="scoreText">0</strong><span>分</span></div>
+        <div class="result-summary">
+          <span class="eyebrow">本回測驗完成</span>
+          <h2 id="resultTitle">成績分析</h2>
+          <div class="result-chips">
+            <span class="good-chip">答對 <b id="correctResult">0</b></span>
+            <span class="bad-chip">答錯 <b id="wrongResult">0</b></span>
+            <span class="neutral-chip">題數 <b id="totalResult">40</b></span>
+          </div>
+        </div>
+        <button id="nextQuizBtn" class="primary-btn" type="button">進行下一回</button>
+      </section>
+
+      <section class="card section-card">
+        <div class="section-head"><div><span class="eyebrow">Weakness Analysis</span><h3>弱項與加強建議</h3></div></div>
+        <div id="weaknessBox" class="weakness-box"></div>
+      </section>
+
+      <section class="card section-card">
+        <div class="section-head"><div><span class="eyebrow">本回 40 題</span><h3>逐題答案檢討</h3></div><span class="muted">綠色＝答對；紅色＝答錯</span></div>
+        <div id="reviewList" class="review-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>資料依原始 MD 題庫建立｜作答紀錄僅儲存在目前瀏覽器</footer>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
